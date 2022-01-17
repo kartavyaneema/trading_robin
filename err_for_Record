@@ -1,0 +1,73 @@
+atum  [1537407540000, '6408.69000000', '6410.58000000', '6406.56000000', '6409.00000000', '14.09717400', 1537407599999, '90345.28831015', 69, '11.60161200', '74351.50792378', '0']
+datum  [1537407600000, '6410.19000000', '6410.55000000', '6409.00000000', '6410.54000000', '4.37096300', 1537407659999, '28016.15910426', 73, '2.54472000', '16311.27843286', '0']
+Traceback (most recent call last):
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.5/http/client.py", line 1197, in getresponse
+    response.begin()
+  File "/usr/lib/python3.5/http/client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.5/http/client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.5/socket.py", line 575, in readinto
+    return self._sock.recv_into(b)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/contrib/pyopenssl.py", line 294, in recv_into
+    raise timeout('The read operation timed out')
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/requests/adapters.py", line 445, in send
+    timeout=timeout
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/util/retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/packages/six.py", line 686, in reraise
+    raise value
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 389, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/urllib3/connectionpool.py", line 309, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "live.py", line 58, in main
+    developingCandlestick = chart.getCandleStick()  # Will directly return a candlestick object: to reduce number of ping
+  File "/media/rk/Data/laxmiji/tr_bot/neema_bot/trading_bot_modularized_v8/botchart.py", line 84, in getCandleStick
+    datum = self.client.get_klines(symbol=self.pair, interval=self.kline_interval, limit = 1)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/binance/client.py", line 592, in get_klines
+    return self._get('klines', data=params)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/binance/client.py", line 180, in _get
+    return self._request_api('get', path, signed, version, **kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/binance/client.py", line 154, in _request_api
+    return self._request(method, uri, signed, **kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/binance/client.py", line 148, in _request
+    response = getattr(self.session, method)(uri, timeout=10, **kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/requests/sessions.py", line 525, in get
+    return self.request('GET', url, **kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/requests/sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/requests/sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/rk/.virtualenvs/virtual-py3/lib/python3.5/site-packages/requests/adapters.py", line 526, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "live.py", line 85, in <module>
+    main(sys.argv[1:])
+  File "live.py", line 61, in main
+    except urllib.URLError:
+AttributeError: module 'urllib' has no attribute 'URLError'
+

@@ -1,0 +1,36 @@
+Where RSI doesn't work
+
+RSI computes no. of days in up, and no. of days in down. RSI = (up days)/ (up days + down days)  approximately.
+
+1) A slow fall in prices can lead to RSI <20
+2) Sharp fall followed by constnat price leads to problems
+
+
+--------------------------------
+OneStock
+--------------------------------
+Important: Visualization is substracting 1 from tradeRecord to plot over the right graph.
+
+Experimented with different version of maRSI
+1) MA5> MA10> MA20:   besr results (folder nmae: ma5): 45% success in 1800 trades
+2) MA5>MA10>MA20 (check in a loop if MA5> MA10 if second condition is true and expire RSI): (folder name: ma5_Expire) 45% in 1500 Trade
+3) OTher: del_P1>del_P2    not great. (combination of them with above not good as well)
+
+
+--------------------------------
+portfolio
+-------------------------------
+Additions:
+
+bostasset.py
+
+Things to be added:
+
+1) in bot strategy cash updates when there is a profit or a losss. make that correction
+2) we can submit stoploss and profit taking when we buy. I don't ae to check it programmatically
+3) Plot live OR print for now:  done printing
+4) check for mockLive and correct the code if wrong :   DOne
+
+5) Rather than taking the data from alpaca for past 100. We can also take last day data
+
+
